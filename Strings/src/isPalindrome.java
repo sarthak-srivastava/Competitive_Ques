@@ -3,7 +3,7 @@ public class isPalindrome {
 	   public static void main(String[] args)
 	    {   Scanner sc = new Scanner(System.in);
 	        String s = sc.next();
-	        System.out.println(Palindrome(s));
+	        printPalindromicSubstring(s);
 	    }
     public static boolean Palindrome(String s)
     {
@@ -19,5 +19,16 @@ public class isPalindrome {
         }
         return true;
     }
- 
+    public static void printPalindromicSubstring(String s)
+    {
+        for(int i = 0; i< s.length();i++)
+        {
+            for(int j = i+1; j<=s.length();j++)
+            {
+                String temp = s.substring(i,j);
+                if(Palindrome(temp) && temp.length()>1)
+                System.out.println(temp);
+            }
+        }
+    }
 }
