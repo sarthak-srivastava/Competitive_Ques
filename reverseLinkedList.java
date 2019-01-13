@@ -3,38 +3,33 @@
 you need to write your solution in the form of Function(s) only.
 Driver Code to call/invoke your function is mentioned above.*/
 
-/* Node of a linked list
+//function Template for Java
+/* Return reference of new head of the reverse linked list 
  class Node {
-   int data;
+     int value;
     Node next;
-    Node(int d)  { data = d;  next = null; }
-}
- Linked List class
-class LinkedList
+    Node(int value) {
+        this.value = value;
+    }
+} */
+class gfg
 {
-    Node head;  // head of list
-}
-This is method only submission.  You only need to complete the method. */
-class GFG
-{
-    // Function to find middle element a linked list
-    int getMiddle(Node head)
+    // This function should reverse linked list and return
+   // head of the modified linked list.
+   Node reverse(Node head)
    {
-         // Your code here.
-         int middle;
-         Node lead = head.next;
-         Node follow = head;
-         while(lead!=null)
-         {
-             lead = lead.next;
-             follow = follow.next;
-             if(lead != null)
-             {
-                 lead = lead.next;
-             }
-             
-         }
-         middle = follow.data;
-         return middle;
+        // add code here
+        if(head==null)
+        return head;
+        Node p = new Node(head.data);
+        Node q = head.next;
+        while(q!=null)
+        {   Node temp = q.next;
+            q.next = p;
+            p = q;
+            q = temp;
+        }
+        return p;
+        
    }
 }
