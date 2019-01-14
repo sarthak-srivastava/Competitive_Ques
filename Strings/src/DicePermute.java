@@ -21,7 +21,7 @@ public static void DiceRoll(int l, int h, int n, int curr_sum, ArrayList<Integer
        c++;
     }
     else
-    {   if(n<=h && !(curr_sum+(h-n)*6<h && curr_sum+(h-n)*1<h))
+    {   if(n<=h && !(curr_sum+(h-n)*6<h && curr_sum+(h-n)*1>h))
        { for(int i = 1;i<7;i++)
         {
             chosen.add(i);
