@@ -6,12 +6,12 @@ class DicePermute {
     Scanner sc = new Scanner(System.in);
     int l = sc.nextInt();
     int h = sc.nextInt();
-    DiceRoll(l,h,0,0,new ArrayList<Integer>()) ;   
+    DiceRoll(l,h,0,l,new ArrayList<Integer>()) ;   
     System.out.println(c);
 }
 public static void DiceRoll(int l, int h, int n, int curr_sum, ArrayList<Integer> chosen)
 {
-    if(curr_sum == h && n>=l && n<=h)
+    if(curr_sum == h && n<=h)
     {    System.out.print("(");
         for(int i = 0; i<chosen.size();i++)
         {
@@ -20,8 +20,8 @@ public static void DiceRoll(int l, int h, int n, int curr_sum, ArrayList<Integer
        System.out.println(")");
        c++;
     }
-    else
-    {   if(n<=h && !(curr_sum+(h-n)*6<h && curr_sum+(h-n)*1>h))
+    if(curr_sum<h)
+    {   if(!(curr_sum+(h-n)*6<h && curr_sum+(h-n)*1>h))
        { for(int i = 1;i<7;i++)
         {
             chosen.add(i);
