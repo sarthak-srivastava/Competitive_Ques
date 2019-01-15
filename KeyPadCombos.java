@@ -3,9 +3,10 @@ public class KeyPadCombos
 {
  static String[] key = {".","abc","def","ghi","jkl","mno","pqr","st","uvwx","yz"};
 public static void main(String[] args)
-{
-    
-    System.out.println(getKPC("179"));
+{   System.out.println("Enter the objective key sequence (e.g. 179)");
+    Scanner sc = new Scanner(System.in);
+    String i = sc.next();
+    System.out.println(getKPC(i));
     
 }
 public static ArrayList<String> getKPC(String str)
