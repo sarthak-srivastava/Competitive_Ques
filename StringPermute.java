@@ -7,6 +7,8 @@ class StringPermute{
         printPermute(ques,"");
         System.out.println();
         printPermute(a,new StringBuilder());
+        System.out.println();
+        printPermute2(new StringBuilder("abc"),new StringBuilder());
 
     }
     public static void printPermute(String ques, String asf)
@@ -42,4 +44,25 @@ class StringPermute{
             }
         }
     }
+    public static void printPermute2(StringBuilder ques,StringBuilder asf)
+    {
+        if(ques.length() == 0)
+        {
+            System.out.print(asf+" ");
+            return;
+        }
+          
+            char ch = ques.charAt(0);
+            StringBuilder roq = ques.deleteCharAt(0);
+            for(int i = 0; i<=asf.length(); i++)
+            {
+                asf.insert(i,ch); 
+                printPermute2(roq,asf);
+                asf.deleteCharAt(i);
+            }
+            roq.insert(0,ch);
+
+        
+    }
+
 }
