@@ -2,9 +2,8 @@ import java.util.*;
 class MergeSort{
     public static void main(String[] args)
     {
-        int[] one = {2,5,9,15,19,20};
-        int[] two = {0,3,7,8,11};
-        int[] merged = merge(one,two);
+        int[] arr = {2,1,0,5,9,6,3,7};
+        int[] merged = mergeSort(arr,0,arr.length-1);
         for(int i = 0; i<merged.length; i++)
         {
             System.out.print(merged[i]+" ");
@@ -49,5 +48,16 @@ class MergeSort{
 
             }
             return merged;
+    }
+    public static int[] mergeSort(int[] arr, int lo, int hi)
+    {   if(lo==hi)
+        {
+            return new int[] {arr[lo]} ;
+        }
+        int mid = (lo+hi)/2;
+        int[] fhalf = mergeSort(arr,lo,mid);
+        int[] shalf = mergeSort(arr,mid+1,hi);
+        int[] sorted = merge(fhalf,shalf);
+        return sorted;
     }
 }
