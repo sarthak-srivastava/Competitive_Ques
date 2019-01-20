@@ -40,4 +40,14 @@ public class LinkedList
         this.head = this.tail = node;
         this.size ++ ;
     }
+    public void display()
+    {
+        Node temp = this.head;
+        while(temp != null)
+        {
+            System.out.print(temp.data + "->");
+            temp = temp.next;
+        }
+        System.out.println("Null");
+    }
 }
