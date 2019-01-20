@@ -50,4 +50,16 @@ public class LinkedList
         }
         System.out.println("Null");
     }
+    public void addFirst(int data)
+    {
+        if(this.size == 0)
+        { this.handlewhensize0(data);
+        return;}
+        Node node = new Node();
+        node.data = data;
+        node.next = head;
+        head = node;
+        return;
+
+    }
 }
