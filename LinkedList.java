@@ -62,4 +62,32 @@ public class LinkedList
         return;
 
     }
+    public int getFirst() throws Exception {
+        if(this.size == 0)
+        throw new Exception("LinkedList is still empty");
+        return head.data;
+    }
+    public int getLast() throws Exception {
+        if(this.size == 0)
+        throw new Exception("LinkedList is still empty");
+        return tail.data;
+    }
+    public int getAtIndex(int idx) throws Exception
+    {
+        if(idx < 0 || idx >= this.size)
+        {
+            throw new Exception("Index out of bounds");
+        }
+        if(this.size == 0)
+        {throw new Exception("No elements in the linkedlist");
+    }
+        Node n = new Node();
+        for(int i = 0;i< idx;i++)
+        {
+            n = n.next;
+        }
+        return n.data;
+        
+        
+    }
 }
