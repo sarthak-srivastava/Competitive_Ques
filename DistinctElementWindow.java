@@ -40,23 +40,24 @@ class GfG
 	// Your code here	
 	int[] dca = new int[n-k+1];
 	for(int i = 0; i<=(n-k);i++)
-	{   int c = k;
-	    int sum = A[i];
-	    int prevsum = 0;
+	{   
+	    
+	    HashSet<Integer> h = new HashSet<Integer>();
+	    
 	    for(int j = 0;j<k;j++)
 	    {
 	        
-	        if((sum - A[i+j] )==prevsum)
-	        c--;
-	        prevsum = sum;
-	        sum += A[i+j];
+	        if(!h.contains(A[i+j] ))
+	        dca[i]++;
+	        
+	        h.add(A[i+j]);
+	        
 	        
 	    }
-	    dca[i] = c+1;
+
 	
     }
     for(int i = 0; i<dca.length;i++)
     System.out.print(dca[i]+" ");
-    System.out.println();
 }
 }
