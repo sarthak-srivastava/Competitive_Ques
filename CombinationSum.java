@@ -51,7 +51,7 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-class GFG {
+class CombinationSum {
 	public static void main (String[] args) {
 		//code
 		Scanner sc = new Scanner(System.in);
@@ -84,9 +84,7 @@ class GFG {
 	    {
 	    return;}
 	    else if((i+1)<arr.length){
-	        System.out.print(ans);
 	        printSubset(arr,t,ssf+arr[i+1],ans+" "+Integer.toString(arr[i+1]),i+1);
-	        System.out.print(ans);
 	        printSubset(arr,t,ssf,ans,i+1);
 	    }
 	    else
