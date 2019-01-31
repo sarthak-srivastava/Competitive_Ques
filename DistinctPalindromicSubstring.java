@@ -8,6 +8,7 @@ class GFG
 	 //code
 	 Scanner sc = new Scanner(System.in);
 	 int t = sc.nextInt();
+	 while(t-->0){
 	 String str = sc.next();
 	 HashSet<String> hs = new HashSet<String>();
 	 int counter = 0;
@@ -21,6 +22,11 @@ class GFG
 	         if(si==ei)
 	         {
 	             qb[si][ei] = true;
+	            if(!hs.contains(str.substring(si,ei+1)))
+	             {
+	                 hs.add(str.substring(si,ei+1));
+	                 counter++;
+	             }
 	         }
 	         else if(ei == si+1)
 	         {
@@ -50,6 +56,6 @@ class GFG
 	    ei++;
 	    }
 	}
-	 System.out.println(counter);
+	 System.out.println(counter);}
 	 }
 }
