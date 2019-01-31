@@ -79,15 +79,18 @@ class GfG
     void levelOrder(Node node) 
     {
         // Your code here
-        Queue<Node> q= new LinkedList<>();
+            Queue<Node> q= new LinkedList<>();
         q.add(node);
         q.add(null);
         while(q.size()!=0)
         {
-            Node t = q.remove();
+            Node t = q.peek();
+            q.remove();
+            if(t == null && q.peek()==null)
+            break;
             if(t == null)
             {q.add(null);
-            System.out.println();
+            System.out.print("$ ");
             }
             else
             {
@@ -96,8 +99,10 @@ class GfG
                 q.add(t.left);
                 if(t.right!=null)
                 q.add(t.right);
+                
             }
             
         }
+        System.out.print("$");
     }
 }
