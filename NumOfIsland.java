@@ -35,37 +35,51 @@ Driver Code to call/invoke your function is mentioned above.*/
 //Function should return the number of islands.
 class GFG
 {
-    public static int findisland(int[][]a,int n,int m)
+       public static int findisland(int[][]a,int n,int m)
     {   
         //Add your code here.
-        int c = 0;
-        for(int i = 0; i<n;i++)
-        {
-            for(int j = 0;j<m;j++)
-            {
-                if(isIsland(a,i,j)>0)
-                c++;
-            }
-        }
-       return c;
-    }
-    public static int isIsland(int[][] a, int i, int j)
-    {   int ans = 0;
-    
-        if(i>=0 && i<a.length && j>=0 && j<a[0].length && a[i][j] == 1)
-        {   a[i][j] = 0;
-            for(int l = i-1;l<=i+1;l++)
-            {
-                for(int m = j-1;m<=j+1;m++)
-                {   
-                    if(l!=m)
-                    {
-                        ans =  (1 + isIsland(a,i+l,j+m));
-                    }
-                }
-            }
-        }
-        return ans;
+        boolean visited[][] = new boolean[n][m]; 
+  
+  
+        // Initialize count as 0 and travese through the all cells 
+        // of given matrix 
+        int count = 0; 
+        for (int i = 0; i < n; ++i) 
+            for (int j = 0; j < m; ++j) 
+                if (a[i][j]==1 && !visited[i][j]) // If a cell with 
+                {                                 // value 1 is not 
+                    // visited yet, then new island found, Visit all 
+                    // cells in this island and increment island count 
+                    DFS(a, i, j, visited); 
+                    ++count; 
+                } 
+  
+        return count; 
         
     }
+     static void DFS(int M[][], int row, int col, boolean visited[][]) 
+    { 
+        // These arrays are used to get row and column numbers 
+        // of 8 neighbors of a given cell 
+        int rowNbr[] = new int[] {-1, -1, -1,  0, 0,  1, 1, 1}; 
+        int colNbr[] = new int[] {-1,  0,  1, -1, 1, -1, 0, 1}; 
+  
+        // Mark this cell as visited 
+        visited[row][col] = true; 
+  
+        // Recur for all connected neighbours 
+        for (int k = 0; k < 8; ++k) 
+            if (isSafe(M, row + rowNbr[k], col + colNbr[k], visited) ) 
+                DFS(M, row + rowNbr[k], col + colNbr[k], visited); 
+    }
+    static boolean isSafe(int M[][], int row, int col, 
+                   boolean visited[][]) 
+    { 
+        // row number is in range, column number is in range 
+        // and value is 1 and not yet visited 
+        return (row >= 0) && (row < M.length) && 
+               (col >= 0) && (col < M[0].length) && 
+               (M[row][col]==1 && !visited[row][col]); 
+    } 
+
 }
