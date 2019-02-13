@@ -1,4 +1,5 @@
-
+{
+//Code by Saksham Raj seth
 import java.io.*;
 import java.util.*;
  class DFS{
@@ -35,7 +36,7 @@ import java.util.*;
         adj[w].add(v);
     }
 }
-
+}
 
 /*Please note that it's Function problem i.e.
 you need to write your solution in the form of Function(s) only.
@@ -48,13 +49,13 @@ class GfG
     {
       // add code here.
       visited[v] = true;
-      System.out.print(v + " ");
-      for(int i = 0; i<adj[v].size(); i++)
+      System.out.print(v+" ");
+      Iterator<Integer> it = adj[v].listIterator();
+      while(it.hasNext())
       {
-       if(!visited[adj[v].get(i)])
-       {
-           DFS(adj[v].get(i),adj,visited);
-       }
+          int i = it.next();
+          if(!visited[i])
+          DFS(i,adj,visited);
       }
     }
 }
