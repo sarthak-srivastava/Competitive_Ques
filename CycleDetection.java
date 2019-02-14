@@ -1,5 +1,4 @@
 {
-//Code by Saksham Raj Seth
 import java.io.*;
 import java.util.*;
 import java.lang.*;
@@ -39,23 +38,31 @@ Driver Code to call/invoke your function is mentioned above.*/
 /*Complete the function below*/
 class GfG
 {
-    public boolean hasCycle(int v,LinkedList<Integer>[] alist,boolean[] visited,boolean[] explored) 
+public boolean DFS(int x,LinkedList<Integer> adj[],boolean vis[], boolean expl[])
+    {   
+        if(expl[x])
+            return true;
+        if(vis[x])
+            return false;
+        vis[x] = true;
+        expl[x]=true;
+        Iterator<Integer> itr = adj[x].iterator();
+        while(itr.hasNext()){
+            int n = itr.next();
+            if(DFS(n, adj, vis, expl))
+                return true;
+        }
+        expl[x]=false;
+        
+        return false;
+    }
+    public boolean hasCycle(int v,LinkedList<Integer>[] alist,boolean[] vis,boolean[] explored) 
      {
-       // add code here.
-       if(explored[v] == true)
-       return true;
-       if(visited[v] == true)
-       return false;
-       explored[v] = true;
-       visited[v] = true;
-       List<Integer> children = alist[v];
-       for(Integer c: children)
-       {
-           if(hasCycle(c,alist,visited,explored))
-           return true;
-           
+       for(int i=0; i<v; i++){
+           if(DFS(i, alist, vis, explored))
+            return true;
+            explored[i]=false;
        }
-       explored[v] = false;
        return false;
      }
 }
