@@ -11,16 +11,15 @@ class GFG
 	 while(t-->0)
 	 {   int n = Integer.parseInt(in.readLine());
 	     String[] str = in.readLine().split(" ");
-	     int[] arr = new int[n];
 	     int maxsofar = Integer.MIN_VALUE;
 	     String ans = "";
 	     for(int i = n-1;i>=0;i--)
 	     {
-	         arr[i] = Integer.parseInt(str[i]);
-	         if(arr[i]>=maxsofar)
+	         int a = Integer.parseInt(str[i]);
+	         if(a>=maxsofar)
 	         {
-	             ans = Integer.toString(arr[i])+" "+ans;
-	             maxsofar = arr[i];
+	             ans = Integer.toString(a)+" "+ans;
+	             maxsofar = a;
 	         }
 	     }
 	     System.out.println(ans);
