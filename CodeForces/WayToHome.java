@@ -8,45 +8,21 @@ public class WayToHome
         int n = sc.nextInt();
         int d = sc.nextInt();
         String str = sc.next();
-        int[] path = new int[n];
-        for(int i = 0; i<n;i++)
-        path[i] = str.charAt(i) - '0';
-        min = Integer.MAX_VALUE;
-        NumOfSteps(path,d,0,0);
-        
-        System.out.println(min);
-        
+		int res = 0;
+		int cur = 0;
+		while(cur < n-1){
+			int prev = cur;
+			res++;
+            for(int i = prev; i <= prev+d && i < n; i++) 
+            {
+                if(str.charAt(i) == '1') 
+                cur = i;}
+			    if(cur == prev) {
+				res = -1;
+				break;
+			
+        }
     }
-
-    
-    public static void NumOfSteps(int[] path, int d, int steps,int j)
-    {   if(j >path.length)
-        {    
-            return;
-        }
-        if(j == path.length - 1 && path[j] == 1)
-        {   if(path[j] == 0)
-            {
-                System.out.println(-1);
-                System.exit(0);
-            }
-            min = Integer.min(min,steps);
-            return;
-        }
-        int flag2 = 0;
-        for(int i = j+1;i<=j+d && i<path.length;i++)
-        {   flag2 |= path[i];
-            // if(i+d<path.length)
-            if(path[i] == 1)
-            {
-                NumOfSteps(path,d,steps+1,i);
-            }
-            
-        }
-        if(flag2 == 0)
-        {
-            System.out.println(-1);
-            System.exit(0);
-        }
+		System.out.println(res);
     }
 }
