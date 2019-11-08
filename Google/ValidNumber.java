@@ -1,3 +1,4 @@
+
 class Solution {
     public boolean isNumber(String s) {
         if(s == null || s.length() == 0)
@@ -19,8 +20,8 @@ class Solution {
         for(int i = 0; i<s.length();i++)
         {
             char ch = s.charAt(i);
-            if(ch == ' ')
-                continue;
+            // if(ch == ' ')
+            //     continue;
             if(!hs.contains(ch))
                 return false;
             else if(ch == '-' || ch == '+')
@@ -35,7 +36,8 @@ class Solution {
                         return false;
                 }
                 else if (prevsigne == -1)
-                    continue;
+                {   prevsigne = 1;
+                    continue;}
                 else
                     return false;
             }
@@ -43,6 +45,7 @@ class Solution {
             {
                 if(eflag!=0)
                     return false; // double e
+                prevsigne = -1;
                 eflag = 1;
                 if(i == 0  || i == s.length() - 1 || (numflag == 0 || (s.charAt(i-1)!='.' && (s.charAt(i-1)>'9' || s.charAt(i-1)<'0'))) || ((s.charAt(i+1)!='+' && s.charAt(i+1)!='-')&&(s.charAt(i+1)>'9' || s.charAt(i+1)<'0')))
                 {
@@ -60,7 +63,9 @@ class Solution {
                 decflag = 1;
             }
             else
-                numflag = 1;
+            {   prevsigne = 0;
+
+                numflag = 1;}
             
         }
         if(numflag==0)
