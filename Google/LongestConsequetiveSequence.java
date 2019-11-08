@@ -9,12 +9,13 @@ class Solution {
         int ans = 1;
         for(int i:nums)
         {
-            if(!hs.contains(i))
                 hs.add(i);
 
             }
         for(int i:nums)
         {   count = 1;
+         if(hs.contains(i-1))
+             continue;
             if(hs.contains(i+1))
             {   int j = i;
                 while(hs.contains(j+1))
