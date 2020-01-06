@@ -1,0 +1,2 @@
+# Write your MySQL query statement below
+SELECT Request_at as Day, ROUND(SUM(t.status != 'completed') / Count(*),2) as "Cancellation Rate" FROM Trips t JOIN Users c ON t.Client_Id = c.Users_Id AND c.Banned = 'No' JOIN Users d ON t.Driver_Id = d.Users_Id AND d.Banned = 'No' AND t.Request_at BETWEEN '2013-10-01' AND '2013-10-03' GROUP BY Day;
