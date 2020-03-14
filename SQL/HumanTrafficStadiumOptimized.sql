@@ -1,0 +1,2 @@
+# Write your MySQL query statement below
+SELECT * FROM (SELECT * FROM stadium WHERE people >= 100) as st WHERE (st.id-1 in (SELECT id FROM stadium WHERE people >= 100) AND st.id+1 in (SELECT id FROM stadium WHERE people >= 100)) OR (st.id-1 in (SELECT id FROM stadium WHERE people >= 100) AND st.id-2 in (SELECT id FROM stadium WHERE people >= 100)) OR (st.id+1 in (SELECT id FROM stadium WHERE people >= 100) AND st.id+2 in (SELECT id FROM stadium WHERE people >= 100));
